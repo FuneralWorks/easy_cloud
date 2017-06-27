@@ -62,19 +62,18 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
             
-            // $message = new Swift_Message('Hello Email')
-            //     ->setFrom('nathan.calvarin@gmail.com')
-            //     ->setTo('nathan.calvarin@gmail.com')
-            //     ->setBody(
-            //         $this->renderView(
-            //             // app/Resources/views/Emails/registration.html.twig
-            //             'Emails/registration.html.twig',
-            //             array('name' => $user->getName())
-            //         ),
-            //         'text/html'
-            //     )
-            // ;
-            // $mailer->send($message);
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Création de votre compte EasyCloud')
+                ->setFrom('nathan.calvarin@gmail.com')
+                ->setTo('nathan.calvarin@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'Emails/registration.html.twig',
+                        array('name' => $user->getLogin(), 'password' => $form->get('password')->getData())
+                    )
+                )
+            ;
+            $this->get('mailer')->send($message);
             return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
@@ -113,7 +112,34 @@ class UserController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+
+
+
+             $user->setSalt(md5(time()));
+            // On crée un mot de passe (attention, comme vous pouvez le voir, il faut utiliser les même paramètres
+            // que spécifiés dans le fichier security.yml, à savoir SHA512 avec 10 itérations.
+            $encoder = new MessageDigestPasswordEncoder('sha512', true, 10);    
+            
+            $password = $encoder->encodePassword($editForm->get('password')->getData(), $user->getSalt());
+            $user->setPassword($password);
+
+
+            $em->persist($user);
+
+            $em->flush();
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Modification de votre compte EasyCloud')
+                ->setFrom('nathan.calvarin@gmail.com')
+                ->setTo('nathan.calvarin@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'Emails/modification.html.twig',
+                        array('name' => $user->getLogin(), 'password' => $editForm->get('password')->getData())
+                    )
+                )
+            ;
+            $this->get('mailer')->send($message);
 
             return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
         }

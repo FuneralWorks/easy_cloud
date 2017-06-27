@@ -18,10 +18,12 @@ class UserType extends AbstractType
             ->add('password')
             ->add('salt')
             ->add('userRoles')
-            ->add('clients', 'collection', [
-                'type' => 'ClientsType:class',
-                'allow_add' => true
-            ]);
+            // ->add('clients', 'collection', [
+            //     'type' => new ClientsType(),
+            //     'prototype' => true,
+            //     'allow_add' => true
+            // ])
+        ;
     }
     
     /**
