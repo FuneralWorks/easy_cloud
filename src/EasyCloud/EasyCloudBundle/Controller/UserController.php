@@ -39,7 +39,7 @@ class UserController extends Controller
      * @Route("/new", name="user_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request, Swift_Mailer $mailer)
+    public function newAction(Request $request)
     {
         $user = new User();
         $form = $this->createForm('EasyCloud\EasyCloudBundle\Form\UserType', $user);
@@ -74,7 +74,7 @@ class UserController extends Controller
             //         'text/html'
             //     )
             // ;
-            $mailer->send($message);
+            // $mailer->send($message);
             return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 

@@ -1,17 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends "Admin/card_container.html.twig" %}
 
-{% block body %}
 
-<div class="container-fluid">
-    <div class="animated fadeIn">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
+{% block card_header %}
     <h1>Users list</h1>
- </div>
-                    <div class="card-block">
-                        <table class="table">
+{% endblock card_header %}
+
+
+{% block card_body %}
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -36,9 +32,5 @@
         {% endfor %}
         </tbody>
     </table>
-</div>
-                </div>
-            </div>
-        </div>
-            <a class="btn btn-success" href="{{ path('user_new') }}">Create a new user</a>
-{% endblock %}
+    <a class="btn btn-success" href="{{ path('user_new') }}">Create a new user</a>
+{% endblock card_body %}

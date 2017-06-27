@@ -13,7 +13,15 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('login')->add('password')->add('salt')->add('userRoles');
+        $builder
+            ->add('login')
+            ->add('password')
+            ->add('salt')
+            ->add('userRoles')
+            ->add('clients', 'collection', [
+                'type' => 'ClientsType:class',
+                'allow_add' => true
+            ]);
     }
     
     /**

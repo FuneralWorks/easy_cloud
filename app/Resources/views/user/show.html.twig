@@ -1,16 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends "Admin/card_container.html.twig" %}
 
-{% block body %}
-<div class="container-fluid">
-    <div class="animated fadeIn">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">
+
+{% block card_header %}
     <h1>User</h1>
-</div>
-                    <div class="card-block">
-                        <table class="table">
+{% endblock card_header %}
+
+
+{% block card_body %}
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -31,17 +28,11 @@
         </tbody>
     </table>
 
-            <a href="{{ path('user_index') }}">Back to the list</a>
+    <a href="{{ path('user_index') }}">Back to the list</a>
 
-            <a class="btn btn-outline-primary" href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
-        
-            {{ form_start(delete_form) }}
-                <input class="btn btn-danger" type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-         </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
+    <a class="btn btn-outline-primary" href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
+
+    {{ form_start(delete_form) }}
+        <input class="btn btn-danger" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+ {% endblock card_body %}
