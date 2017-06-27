@@ -1,0 +1,69 @@
+easy_cloud_user:
+    resource: "@EasyCloudBundle/Controller/UserController.php"
+    type:     annotation
+    prefix: /admin
+
+_security:
+    resource: "@EasyCloudBundle/Controller/SecurityController.php"
+    type:     annotation
+
+# Cette route sera gérée automatiquement par symfony, il faut juste la déclarer
+_security_login_check:
+    pattern: /login_check
+
+# Cette route sera gérée automatiquement par symfony, il faut juste la déclarer
+_security_logout:
+    pattern: /logout
+
+easy_cloud_admin:
+    path: /admin
+    defaults: { _controller: EasyCloudBundle:Admin:index}
+
+_admin:
+    resource: "@EasyCloudBundle/Controller/AdminController.php"
+    type:     annotation
+
+_admin_products:
+    resource: "@EasyCloudBundle/Controller/ProductsController.php"
+    type:     annotation
+    prefix: /admin
+
+_admin_subscriptions:
+    resource: "@EasyCloudBundle/Controller/SubscriptionsController.php"
+    type:     annotation
+    prefix: /admin
+
+_admin_subscriptions_products:
+    resource: "@EasyCloudBundle/Controller/SubscriptionsProductsController.php"
+    type:     annotation
+
+_admin_products_licences:
+    resource: "@EasyCloudBundle/Controller/ProductsLicencesController.php"
+    type:     annotation
+
+_admin_plan_rate:
+    resource: "@EasyCloudBundle/Controller/PlanRateController.php"
+    type:     annotation
+    prefix: /admin
+
+_admin_licences:
+    resource: "@EasyCloudBundle/Controller/LicencesController.php"
+    type:     annotation
+    prefix: /admin
+
+_admin_clients:
+    resource: "@EasyCloudBundle/Controller/ClientsController.php"
+    type:     annotation
+    prefix: /admin
+
+# easy_cloud_clients:
+#     resource: "@EasyCloudBundle/Controller/ClientsController.php"
+#     type:     annotation
+
+easy_cloud:
+    resource: "@EasyCloudBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

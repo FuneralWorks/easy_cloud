@@ -1,0 +1,36 @@
+{% extends "Admin/card_container.html.twig" %}
+
+
+{% block card_header %}
+    <h1>Clients list</h1>
+{% endblock card_header %}
+
+
+
+{% block card_body %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clients %}
+        <tr>
+            <td><a href="{{ path('clients_show', { 'id': client.id }) }}">{{ client.id }}</a></td>
+            <td>{{ client.name }}</td>
+            <td>{{ client.description }}</td>
+            <td>
+                <a class="btn btn-primary" href="{{ path('clients_show', { 'id': client.id }) }}">show</a>
+                <a class="btn btn-outline-primary" href="{{ path('clients_edit', { 'id': client.id }) }}">edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a class="btn btn-success" href="{{ path('clients_new') }}">Create a new client</a> 
+{% endblock card_body %}

@@ -1,0 +1,16 @@
+{% extends "Admin/card_container.html.twig" %}
+
+
+{% block card_header %}
+    <h1>Subscription creation</h1>
+{% endblock card_header %}
+
+
+{% block card_body %}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <a href="{{ path('subscriptions_index') }}">Back to the list</a>
+{% endblock card_body %}

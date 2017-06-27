@@ -1,0 +1,30 @@
+{% extends "Admin/card_container.html.twig" %}
+
+
+{% block card_header %}
+    <h1>Planrate</h1>
+{% endblock card_header %}
+
+
+{% block card_body %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ planRate.id }}</td>
+            </tr>
+            <tr>
+                <th>Monthduration</th>
+                <td>{{ planRate.monthDuration }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+  
+    <a  class="btn btn-outline-primary" href="{{ path('planrate_index') }}">Back to the list</a>
+    <a class="btn btn-primary" href="{{ path('planrate_edit', { 'id': planRate.id }) }}">Edit</a>
+    {{ form_start(delete_form) }}
+    <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+
+{% endblock card_body %}

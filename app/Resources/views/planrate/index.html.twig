@@ -1,0 +1,33 @@
+{% extends "Admin/card_container.html.twig" %}
+
+
+{% block card_header %}
+    <h1>Planrates list</h1>
+{% endblock card_header %}
+
+
+{% block card_body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Monthduration</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for planRate in planRates %}
+            <tr>
+                <td><a href="{{ path('planrate_show', { 'id': planRate.id }) }}">{{ planRate.id }}</a></td>
+                <td>{{ planRate.monthDuration }}</td>
+                <td>
+                            <a class="btn btn-primary" href="{{ path('planrate_show', { 'id': planRate.id }) }}">show</a>
+                            <a class="btn btn-outline-primary" href="{{ path('planrate_edit', { 'id': planRate.id }) }}">edit</a>  
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        <a class="btn btn-success" href="{{ path('planrate_new') }}">Create a new planRate</a>
+
+{% endblock card_body %}

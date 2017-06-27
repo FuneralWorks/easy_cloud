@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}EasyCloud{% endblock %}</title>
+    {% block stylesheets %}
+    {#Icons#}
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/simple-line-icons.css')}}">
+    <!-- Main styles for this application -->
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}"> {% endblock %}
+
+</head>
+
+<body class="app header-fixed">
+
+    <!--Navigation bar-->
+    {% include "modules/navigation.html.twig" %}
+
+        <div class="app-body">
+
+            <!-- Main content -->
+            <main class="main">
+
+                <!-- Breadcrumb -->
+                
+                <ol class="breadcrumb">
+                    {% block breadcumb %} {% endblock breadcumb %}
+                </ol>
+
+
+                <div class="container-fluid">
+                    {% block body %}{% endblock body %}
+
+
+
+                </div>
+                <!-- /.container-fluid -->
+            </main>
+
+
+        </div>
+        <footer class="app-footer">
+            <a href="">EasyCloud</a>
+            <span class="float-right">Powered by <a href="">NextiraOne</a>
+        </span>
+        </footer>
+
+        {% block javascript %}
+        <!-- Bootstrap and necessary plugins -->
+        <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('bower_components/tether/dist/js/tether.min.js') }}"></script>
+        <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bower_components/pace/pace.min.js') }}"></script>
+        {% endblock %}
+</body>
+
+</html>

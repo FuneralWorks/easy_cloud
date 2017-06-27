@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Productslicences list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for productsLicence in productsLicences %}
+            <tr>
+                <td><a href="{{ path('productslicences_show', { 'id': productsLicence.id }) }}">{{ productsLicence.id }}</a></td>
+                <td>{{ productsLicence.quantity }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('productslicences_show', { 'id': productsLicence.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('productslicences_edit', { 'id': productsLicence.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('productslicences_new') }}">Create a new productsLicence</a>
+        </li>
+    </ul>
+{% endblock %}

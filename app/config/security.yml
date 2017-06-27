@@ -1,0 +1,44 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+
+    encoders:
+        EasyCloud\EasyCloudBundle\Entity\User: 
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        main:
+            entity: { class: EasyCloudBundle:User, property:login }
+    
+    
+    
+
+
+    firewalls:
+        # dev:
+        #     pattern:  ^/(_(profiler|wdt)|css|images|js)/
+        #     security: false
+
+        # login:
+        #     pattern:  ^/admin/login
+        #     security: false
+
+        secured_area:
+                pattern:    ^/
+                anonymous: ~
+                form_login:
+                    login_path: /login
+                    check_path: /login_check
+                logout:
+                    path:   _security_logout
+                    target: /admin
+        
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }

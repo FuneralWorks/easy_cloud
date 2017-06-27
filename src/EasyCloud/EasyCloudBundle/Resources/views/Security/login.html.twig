@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %} {% block title %}Authentification requise{% endblock %}
+{% block body %} 
+
+
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card-group">
+            <div class="card card-inverse card-primary d-md-down-none">
+                <div class="card-block text-center">
+                {% if error %}
+                    <div class="error">{{ error.message }}</div>
+                {% endif %}
+
+                <form action="{{ path('_security_login_check') }}" method="POST">
+
+                    <input type="hidden" name="_target_path" value="{{ url('easy_cloud_admin') }}" class="form-control"/>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon"><i class="icon-user"></i>
+                        </span>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Username"/>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon"><i class="icon-lock"></i>
+                        </span>
+                        <input type="password" id="password" name="_password" placeholder="Password" class="form-control" />
+                    </div>
+
+                    <input class="btn btn-secondary" type="submit" name="login" value="Submit" />
+
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

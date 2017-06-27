@@ -1,0 +1,42 @@
+{% extends "Admin/card_container.html.twig" %}
+
+
+{% block card_header %}
+    <h1>Subscription</h1>
+{% endblock card_header %}
+
+
+{% block card_body %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ subscription.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ subscription.name }}</td>
+            </tr>
+            <tr>
+                <th>Startdate</th>
+                <td>{% if subscription.startDate %}{{ subscription.startDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Monthduration</th>
+                <td>{{ subscription.monthDuration }}</td>
+            </tr>
+            <tr>
+                <th>Sapcontractnumber</th>
+                <td>{{ subscription.sapContractNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+            <a href="{{ path('subscriptions_index') }}">Back to the list</a>
+            <a class="btn btn-outline-primary"  href="{{ path('subscriptions_edit', { 'id': subscription.id }) }}">Edit</a>
+        
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger"type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        
+{% endblock card_body %}

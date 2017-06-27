@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Subscriptionsproducts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subscriptionsProduct in subscriptionsProducts %}
+            <tr>
+                <td><a href="{{ path('subscriptionsproducts_show', { 'id': subscriptionsProduct.id }) }}">{{ subscriptionsProduct.id }}</a></td>
+                <td>{{ subscriptionsProduct.quantity }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('subscriptionsproducts_show', { 'id': subscriptionsProduct.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('subscriptionsproducts_edit', { 'id': subscriptionsProduct.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('subscriptionsproducts_new') }}">Create a new subscriptionsProduct</a>
+        </li>
+    </ul>
+{% endblock %}

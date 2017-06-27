@@ -1,0 +1,40 @@
+{% extends "Admin/card_container.html.twig" %}
+
+
+{% block card_header %}
+    <h1>Licences list</h1>
+{% endblock card_header %}
+
+
+{% block card_body %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Sku</th>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for licence in licences %}
+                <tr>
+                    <td><a href="{{ path('licences_show', { 'id': licence.id }) }}">{{ licence.id }}</a></td>
+                    <td>{{ licence.sku }}</td>
+                    <td>{{ licence.name }}</td>
+                    <td>{{ licence.designation }}</td>
+                    <td>
+                                <a class="btn btn-primary" href="{{ path('licences_show', { 'id': licence.id }) }}">show</a>
+                            
+                                <a class="btn btn-outline-primary" href="{{ path('licences_edit', { 'id': licence.id }) }}">edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>                   
+        
+        <a class="btn btn-success" href="{{ path('licences_new') }}">Create a new licence</a>
+            
+        {% endblock card_body %}

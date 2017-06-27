@@ -1,0 +1,3 @@
+easy_cloud_homepage:
+    path:     /
+    defaults: { _controller: EasyCloudBundle:Default:index }

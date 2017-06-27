@@ -1,0 +1,34 @@
+{% extends "Admin/card_container.html.twig" %}
+
+
+{% block card_header %}
+    <h1>Products list</h1>
+{% endblock card_header %}
+
+
+{% block card_body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Designation</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td><a href="{{ path('products_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                <td>{{ product.designation }}</td>
+                <td>{{ product.name }}</td>
+                <td>
+                            <a class="btn btn-primary" href="{{ path('products_show', { 'id': product.id }) }}">show</a>
+                            <a class="btn btn-outline-primary" href="{{ path('products_edit', { 'id': product.id }) }}">edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-success" href="{{ path('products_new') }}">Create a new product</a>
+    {% endblock card_body %}
