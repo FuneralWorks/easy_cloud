@@ -16,7 +16,11 @@
 <body class="app header-fixed">
 
     <!--Navigation bar-->
-    {% include "modules/navigation.html.twig" %}
+    {% if is_granted('ROLE_ADMIN') %}
+        {% include "modules/navigationAdmin.html.twig" %}
+    {% else %}
+        {% include "modules/navigation.html.twig" %}
+    {% endif %}
 
         <div class="app-body">
 

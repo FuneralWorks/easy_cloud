@@ -12,10 +12,18 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-        /**
-         * Comme @Template() est vide, il va chercher par défaut le fichier dans videothequeBundle/views/Admin/index.html.twig
-         */
-        return array();
+        $em = $this->getDoctrine()->getManager();
+        $nbClients = count($em->getRepository('EasyCloudBundle:Clients')->findAll());
+        $nbProducts = count($em->getRepository('EasyCloudBundle:Products')->findAll());
+        $nbLicences = count($em->getRepository('EasyCloudBundle:Licences')->findAll());
+        $nbUser = count($em->getRepository('EasyCloudBundle:User')->findAll());
+
+
+        
+        return array('nbClients' => $nbClients,
+                     'nbLicences' => $nbLicences,
+                     'nbProducts' => $nbProducts,
+                     'nbUser' => $nbUser);
     }
 }
 
