@@ -65,7 +65,7 @@ class UserController extends Controller
             $message = \Swift_Message::newInstance()
                 ->setSubject('Création de votre compte EasyCloud')
                 ->setFrom('nathan.calvarin@gmail.com')
-                ->setTo('nathan.calvarin@gmail.com')
+                ->setTo($user->getEmail())
                 ->setBody(
                     $this->renderView(
                         'Emails/registration.html.twig',
@@ -131,7 +131,7 @@ class UserController extends Controller
             $message = \Swift_Message::newInstance()
                 ->setSubject('Modification de votre compte EasyCloud')
                 ->setFrom('nathan.calvarin@gmail.com')
-                ->setTo('nathan.calvarin@gmail.com')
+                ->setTo($user->getEmail())
                 ->setBody(
                     $this->renderView(
                         'Emails/modification.html.twig',

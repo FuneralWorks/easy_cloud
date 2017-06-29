@@ -2,20 +2,49 @@
 
 
 {% block card_header %}
-    <h1>Licence edit</h1>
+    <h1>Licence modification</h1>
 {% endblock card_header %}
 
 
 {% block card_body %}
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input class="btn btn-primary" type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <a href="{{ path('licences_index') }}">Back to the list</a>
-
-    {{ form_start(delete_form) }}
-        <input class="btn btn-danger" type="submit" value="Delete">
-    {{ form_end(delete_form) }}
+       <div class="row"> 
+        <div class="col-sm-1">
+            {{ form_label(edit_form.name)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(edit_form.name) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-1">
+            {{ form_label(edit_form.sku)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(edit_form.sku) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-1">
+            {{ form_label(edit_form.designation)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(edit_form.designation) }}
+        </div>
+    </div>
+        
 
 {% endblock card_body %}
+
+{% block card_footer %}
+    <a href="{{ path('licences_index') }}">Retour à la liste</a>
+
+    <input class="btn btn-success" type="submit" value="Editer" />
+    {{ form_end(edit_form) }}
+
+    
+
+    {{ form_start(delete_form) }}
+        <input class="btn btn-danger" type="submit" value="Supprimer">
+    {{ form_end(delete_form) }}
+{% endblock card_footer %}

@@ -2,7 +2,7 @@
 
 
 {% block card_header %}
-    <h1>User</h1>
+    <h1>Utilisateurs</h1>
 {% endblock card_header %}
 
 
@@ -10,29 +10,34 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
+                <th>Nom</th>
+                <td>{{ user.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ user.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
             </tr>
             <tr>
                 <th>Login</th>
                 <td>{{ user.login }}</td>
             </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Salt</th>
-                <td>{{ user.salt }}</td>
-            </tr>
+            
         </tbody>
     </table>
 
-    <a href="{{ path('user_index') }}">Back to the list</a>
+    
+ {% endblock card_body %}
 
-    <a class="btn btn-outline-primary" href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
+{% block card_footer %}
+    <a href="{{ path('user_index') }}">Retour à la liste</a>
+
+    <a class="btn btn-outline-primary" href="{{ path('user_edit', { 'id': user.id }) }}">Editer</a>
 
     {{ form_start(delete_form) }}
-        <input class="btn btn-danger" type="submit" value="Delete">
+        <input class="btn btn-danger" type="submit" value="Supprimer">
     {{ form_end(delete_form) }}
- {% endblock card_body %}
+{% endblock card_footer %}

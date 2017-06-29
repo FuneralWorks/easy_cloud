@@ -28,6 +28,9 @@
             {% endfor %}
         </tbody>
     </table>
-        <a class="btn btn-success" href="{{ path('planrate_new') }}">Create a new planRate</a>
+        
 
 {% endblock card_body %}
+{% block card_footer %}
+        <a class="btn btn-success" href="{{ path('planrate_new') }}">Create a new planRate</a>
+    {% endblock card_footer %}

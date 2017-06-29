@@ -145,37 +145,5 @@ class Clients
         return $this->users;
     }
 
-    /**
-     * Add utilisateur
-     *
-     * @param \EasyCloud\EasyCloudBundle\Entity\User $utilisateur
-     *
-     * @return Clients
-     */
-    public function addUtilisateur(\EasyCloud\EasyCloudBundle\Entity\User $utilisateur)
-    {
-        $this->utilisateurs[] = $utilisateur;
-
-        return $this;
-    }
-
-    /**
-     * Remove utilisateur
-     *
-     * @param \EasyCloud\EasyCloudBundle\Entity\User $utilisateur
-     */
-    public function removeUtilisateur(\EasyCloud\EasyCloudBundle\Entity\User $utilisateur)
-    {
-        $this->utilisateurs->removeElement($utilisateur);
-    }
-
-    /**
-     * Get utilisateurs
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUtilisateurs()
-    {
-        return $this->utilisateurs;
-    }
+    
 }

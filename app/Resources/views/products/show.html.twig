@@ -2,7 +2,7 @@
 
 
 {% block card_header %}
-    <h1>Product</h1>
+    <h1>Produit</h1>
 {% endblock card_header %}
 
 
@@ -10,24 +10,29 @@
 
     <table class="table">
         <tbody>
+            
+            <tr>
+                <th>Nom</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Désignation</th>
+                <td>{{ product.designation }}</td>
+            </tr>
             <tr>
                 <th>Id</th>
                 <td>{{ product.id }}</td>
             </tr>
-            <tr>
-                <th>Designation</th>
-                <td>{{ product.designation }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ product.name }}</td>
-            </tr>
         </tbody>
     </table>
 
-    <a class="btn btn-outline-primary" href="{{ path('products_index') }}">Back to the list</a>
-    <a class="btn btn-primary" href="{{ path('products_edit', { 'id': product.id }) }}">Edit</a> {{ form_start(delete_form)
-    }}
-    <input class="btn btn-danger" type="submit" value="Delete"> {{ form_end(delete_form) }}
+    
                     
 {% endblock card_body %}
+
+{% block card_footer %}
+    <a href="{{ path('products_index') }}">Retour à la liste</a>
+    <a class="btn btn-primary" href="{{ path('products_edit', { 'id': product.id }) }}">Editer</a> 
+    {{ form_start(delete_form)}}
+    <input class="btn btn-danger" type="submit" value="Supprimer"> {{ form_end(delete_form) }}
+{% endblock card_footer %}

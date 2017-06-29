@@ -2,7 +2,7 @@
 
 
 {% block card_header %}
-    <h1>Users list</h1>
+    <h1>Utilisateurs</h1>
 {% endblock card_header %}
 
 
@@ -10,8 +10,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Login</th>
+                <th>Nom</th>
+                <th>Email</th>
                 <!--<th>Password</th>-->
                 <!--<th>Salt</th>-->
                 <th>Actions</th>
@@ -20,17 +21,22 @@
         <tbody>
         {% for user in users %}
             <tr>
-                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-                <td>{{ user.login }}</td>
+                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.login }}</a></td>
+                <td>{{ user.firstName}} {{ user.lastName}}</td>
+                <td>{{ user.email}} </td>
                 <!--<td>{{ user.password }}</td>-->
                 <!--<td>{{ user.salt }}</td>-->
                 <td>
-                    <a class="btn btn-primary" href="{{ path('user_show', { 'id': user.id }) }}">show</a>
-                    <a class="btn btn-outline-primary" href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('user_show', { 'id': user.id }) }}">Voir</a>
+                    <a class="btn btn-outline-primary" href="{{ path('user_edit', { 'id': user.id }) }}">Editer</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    <a class="btn btn-success" href="{{ path('user_new') }}">Create a new user</a>
+    
 {% endblock card_body %}
+
+{% block card_footer %}
+    <a class="btn btn-success" href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
+{% endblock card_footer %}

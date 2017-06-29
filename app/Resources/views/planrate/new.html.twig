@@ -7,7 +7,25 @@
 
 
 {% block card_body %}
-    {{ form_start(form) }} {{ form_widget(form) }}
-    <input class="btn btn-success" type="submit" value="Create" /> {{ form_end(form) }}
-    <a href="{{ path('planrate_index') }}">Back to the list</a>
+   {{ form_start(form) }} 
+
+    <div class="form-group row">
+        <label class="col-md-1" for="monthDuration">{{ form_label(form.monthDuration) }}</label>
+        <div class="col-md-9">{{ form_widget(form.monthDuration) }}</div>
+        
+    </div>
+    
+     <div class="form-group row">
+        <label class="col-md-1" for="product">{{ form_label(form.product) }}</label>
+        <div class="col-md-9">{{ form_widget(form.product) }}</div>
+    </div>
+
+   
+    
 {% endblock card_body %}
+
+{% block card_footer %}
+     <input class="btn btn-success" type="submit" value="Create" /> 
+    {{ form_end(form) }}
+    <a href="{{ path('planrate_index') }}">Back to the list</a>
+{% endblock card_footer %}

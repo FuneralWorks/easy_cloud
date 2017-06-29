@@ -10,30 +10,32 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Startdate</th>
-                <th>Monthduration</th>
-                <th>Sapcontractnumber</th>
+                <th>Nom</th>
+                <th>Date de début</th>
+                <th>Durée (mois)</th>
+                <th>Sap Contract Number</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for subscription in subscriptions %}
             <tr>
-                <td><a href="{{ path('subscriptions_show', { 'id': subscription.id }) }}">{{ subscription.id }}</a></td>
-                <td>{{ subscription.name }}</td>
+                <td><a href="{{ path('subscriptions_show', { 'id': subscription.id }) }}">{{ subscription.name }}</a></td>
                 <td>{% if subscription.startDate %}{{ subscription.startDate|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ subscription.monthDuration }}</td>
                 <td>{{ subscription.sapContractNumber }}</td>
                 <td>
-                            <a class="btn btn-primary" href="{{ path('subscriptions_show', { 'id': subscription.id }) }}">show</a>
-                            <a class="btn btn-outline-primary" href="{{ path('subscriptions_edit', { 'id': subscription.id }) }}">edit</a>
+                            <a class="btn btn-primary" href="{{ path('subscriptions_show', { 'id': subscription.id }) }}">Voir</a>
+                            <a class="btn btn-outline-primary" href="{{ path('subscriptions_edit', { 'id': subscription.id }) }}">Editer</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     
-    <a class="btn btn-success" href="{{ path('subscriptions_new') }}">Create a new subscription</a>
+    
 {% endblock card_body %}
+
+{% block card_footer %}
+    <a class="btn btn-success" href="{{ path('subscriptions_new') }}">Créer un abonnement</a>
+{% endblock card_footer %}

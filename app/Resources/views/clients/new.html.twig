@@ -1,16 +1,34 @@
 {% extends "Admin/card_container.html.twig" %}
 
 {% block card_header %}
-    <h1>Client creation</h1>
+    <h1>Création Client </h1>
 {% endblock card_header %}
 
 
 {% block card_body %}
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input class="btn btn-success" type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <a href="{{ path('clients_index') }}">Back to the list</a>
+    <div class="row"> 
+        <div class="col-sm-1">
+            {{ form_label(form.name)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(form.name) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-1">
+            {{ form_label(form.description)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(form.description) }}
+        </div>
+    </div>
         
 {% endblock card_body %}
+
+{% block card_footer %}
+    <input class="btn btn-success" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <a href="{{ path('clients_index') }}">Retour à la liste</a>
+{% endblock card_footer %}

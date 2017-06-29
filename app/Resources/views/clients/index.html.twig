@@ -2,7 +2,7 @@
 
 
 {% block card_header %}
-    <h1>Clients list</h1>
+    <h1>Clients</h1>
 {% endblock card_header %}
 
 
@@ -11,8 +11,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
+            <th>Nom</th>
             <th>Description</th>
             <th>Actions</th>
         </tr>
@@ -20,17 +19,19 @@
     <tbody>
         {% for client in clients %}
         <tr>
-            <td><a href="{{ path('clients_show', { 'id': client.id }) }}">{{ client.id }}</a></td>
-            <td>{{ client.name }}</td>
+            <td><a href="{{ path('clients_show', { 'id': client.id }) }}"></a>{{ client.name }}</td>
             <td>{{ client.description }}</td>
             <td>
-                <a class="btn btn-primary" href="{{ path('clients_show', { 'id': client.id }) }}">show</a>
-                <a class="btn btn-outline-primary" href="{{ path('clients_edit', { 'id': client.id }) }}">edit</a>
+                <a class="btn btn-primary" href="{{ path('clients_show', { 'id': client.id }) }}">Voir</a>
+                <a class="btn btn-outline-primary" href="{{ path('clients_edit', { 'id': client.id }) }}">Editer</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<a class="btn btn-success" href="{{ path('clients_new') }}">Create a new client</a> 
 {% endblock card_body %}
+
+{% block card_footer %}
+    <a class="btn btn-success" href="{{ path('clients_new') }}">Créer un nouveau client</a> 
+{% endblock card_footer %}

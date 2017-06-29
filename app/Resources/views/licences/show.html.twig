@@ -9,28 +9,32 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ licence.id }}</td>
+                <th>Nom</th>
+                <td>{{ licence.name }}</td>
             </tr>
             <tr>
                 <th>Sku</th>
                 <td>{{ licence.sku }}</td>
             </tr>
             <tr>
-                <th>Name</th>
-                <td>{{ licence.name }}</td>
-            </tr>
-            <tr>
                 <th>Designation</th>
                 <td>{{ licence.designation }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ licence.id }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a class="btn btn-outline-primary" href="{{ path('licences_index') }}">Back to the list</a>
-
-    <a class="btn btn-primary" href="{{ path('licences_edit', { 'id': licence.id }) }}">Edit</a>
-
-    {{ form_start(delete_form) }}
-    <input class="btn btn-danger" type="submit" value="Delete"> {{ form_end(delete_form) }}
+    
 {% endblock card_body %}
+
+{% block card_footer %}
+    <a class="btn btn-primary" href="{{ path('licences_edit', { 'id': licence.id }) }}">Editer</a>
+    <a href="{{ path('licences_index') }}">Retour à la liste</a>
+   {{ form_start(delete_form) }}
+    <input class="btn btn-danger" type="submit" value="Supprimer"> {{ form_end(delete_form) }}
+
+     
+{% endblock card_footer %}

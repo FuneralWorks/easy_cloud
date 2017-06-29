@@ -16,7 +16,10 @@ class UserType extends AbstractType
         $builder
             ->add('login')
             ->add('password')
-            ->add('salt')
+            ->add('email')
+            ->add('firstName')
+            ->add('lastName')
+            // ->add('salt')
             ->add('userRoles')
             // ->add('clients', 'collection', [
             //     'type' => new ClientsType(),

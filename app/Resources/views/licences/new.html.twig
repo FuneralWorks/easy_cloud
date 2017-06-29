@@ -2,12 +2,34 @@
 
 
 {% block card_header %}
-    <h1>Licence creation</h1>
+    <h1>Création Licence</h1>
 {% endblock card_header %}
 
 {% block card_body %}
-    {{ form_start(form) }} {{ form_widget(form) }}
-    <input class="btn btn-success" type="submit" value="Create" /> {{ form_end(form) }}
+
+    {{ form_start(form) }} 
+
+    <div class="form-group row">
+        <label class="col-md-1" for="name">{{ form_label(form.name) }}</label>
+        <div class="col-md-9">{{ form_widget(form.name) }}</div>
+        
+    </div>
     
-    <a href="{{ path('licences_index') }}">Back to the list</a>
+     <div class="form-group row">
+        <label class="col-md-1" for="sku">{{ form_label(form.sku) }}</label>
+        <div class="col-md-9">{{ form_widget(form.sku) }}</div>
+    </div>
+
+     <div class="form-group row">
+        <label class="col-md-1" for="designation">{{ form_label(form.designation) }}</label>
+        <div class="col-md-9">{{ form_widget(form.designation) }}</div>
+    </div>
+
 {% endblock card_body %}
+
+{% block card_footer %}
+    <input class="btn btn-success" type="submit" value="Créer" /> 
+    {{ form_end(form) }}
+    
+    <a href="{{ path('licences_index') }}">Retour à la liste</a>
+{% endblock card_footer %}

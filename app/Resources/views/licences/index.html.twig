@@ -2,7 +2,7 @@
 
 
 {% block card_header %}
-    <h1>Licences list</h1>
+    <h1>Licences</h1>
 {% endblock card_header %}
 
 
@@ -11,9 +11,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Nom</th>
                     <th>Sku</th>
-                    <th>Name</th>
                     <th>Designation</th>
                     <th>Actions</th>
                 </tr>
@@ -21,20 +20,24 @@
             <tbody>
                 {% for licence in licences %}
                 <tr>
-                    <td><a href="{{ path('licences_show', { 'id': licence.id }) }}">{{ licence.id }}</a></td>
+                    
+                    <td><a href="{{ path('licences_show', { 'id': licence.id }) }}">{{ licence.name }}</a></td>
                     <td>{{ licence.sku }}</td>
-                    <td>{{ licence.name }}</td>
                     <td>{{ licence.designation }}</td>
                     <td>
-                                <a class="btn btn-primary" href="{{ path('licences_show', { 'id': licence.id }) }}">show</a>
+                                <a class="btn btn-primary" href="{{ path('licences_show', { 'id': licence.id }) }}">Voir</a>
                             
-                                <a class="btn btn-outline-primary" href="{{ path('licences_edit', { 'id': licence.id }) }}">edit</a>
+                                <a class="btn btn-outline-primary" href="{{ path('licences_edit', { 'id': licence.id }) }}">Editer</a>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>                   
         
-        <a class="btn btn-success" href="{{ path('licences_new') }}">Create a new licence</a>
+       
             
         {% endblock card_body %}
+
+        {% block card_footer %}
+             <a class="btn btn-success" href="{{ path('licences_new') }}">Créer une licence</a>
+        {% endblock card_footer %}
