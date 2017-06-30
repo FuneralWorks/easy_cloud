@@ -184,4 +184,9 @@ class Products
     {
         return $this->products_licences;
     }
+
+     public function __toString()
+    {
+    return $this->getName();
+    }
 }

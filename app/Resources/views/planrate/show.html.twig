@@ -10,21 +10,29 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ planRate.id }}</td>
-            </tr>
-            <tr>
                 <th>Monthduration</th>
                 <td>{{ planRate.monthDuration }}</td>
+            </tr>
+            <tr>
+                <th>Product</th>
+                <td>{{ planRate.product }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ planRate.id }}</td>
             </tr>
         </tbody>
     </table>
 
   
-    <a  class="btn btn-outline-primary" href="{{ path('planrate_index') }}">Back to the list</a>
-    <a class="btn btn-primary" href="{{ path('planrate_edit', { 'id': planRate.id }) }}">Edit</a>
-    {{ form_start(delete_form) }}
-    <input class="btn btn-danger" type="submit" value="Delete">
-            {{ form_end(delete_form) }}
 
 {% endblock card_body %}
+
+{% block card_footer%}
+    <a href="{{ path('planrate_index') }}">Retour à la liste</a>
+    <a class="btn btn-primary" href="{{ path('planrate_edit', { 'id': planRate.id }) }}">Editer</a>
+    {{ form_start(delete_form) }}
+    <input class="btn btn-danger" type="submit" value="Supprimer">
+    {{ form_end(delete_form) }}
+
+{% endblock card_footer%}

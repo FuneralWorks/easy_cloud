@@ -2,7 +2,7 @@
 
 
 {% block card_header %}
-    <h1>Planrates list</h1>
+    <h1>Planrates</h1>
 {% endblock card_header %}
 
 
@@ -10,19 +10,21 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Product</th>
+                <th>Durée (mois)</th>
                 <th>Id</th>
-                <th>Monthduration</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for planRate in planRates %}
             <tr>
-                <td><a href="{{ path('planrate_show', { 'id': planRate.id }) }}">{{ planRate.id }}</a></td>
+                <td>{{ planRate.product }}</td>
                 <td>{{ planRate.monthDuration }}</td>
+                <td>{{ planRate.id }}</td>
                 <td>
-                            <a class="btn btn-primary" href="{{ path('planrate_show', { 'id': planRate.id }) }}">show</a>
-                            <a class="btn btn-outline-primary" href="{{ path('planrate_edit', { 'id': planRate.id }) }}">edit</a>  
+                            <a class="btn btn-primary" href="{{ path('planrate_show', { 'id': planRate.id }) }}">Voir</a>
+                            <a class="btn btn-outline-primary" href="{{ path('planrate_edit', { 'id': planRate.id }) }}">Editer</a>  
                 </td>
             </tr>
             {% endfor %}
@@ -32,5 +34,5 @@
 
 {% endblock card_body %}
 {% block card_footer %}
-        <a class="btn btn-success" href="{{ path('planrate_new') }}">Create a new planRate</a>
+        <a class="btn btn-success" href="{{ path('planrate_new') }}">Créer un planRate</a>
     {% endblock card_footer %}

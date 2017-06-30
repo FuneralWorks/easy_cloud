@@ -88,4 +88,5 @@ class Role implements RoleInterface
     {
         return $this->getName();
     }
+
 }

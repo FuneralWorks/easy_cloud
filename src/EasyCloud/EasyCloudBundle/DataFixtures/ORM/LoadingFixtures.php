@@ -41,7 +41,9 @@ class LoadingFixtures implements FixtureInterface
     $password = $encoder->encodePassword('password', $user->getSalt());
     // On applique le mot de passe à l'utilisateur
     $user->setPassword($password);
-
+    $user->setFirstName("Nathan");
+    $user->setLastName("Calvarin");
+    $user->setEmail("nathan.calvarin@gmail.com");
     $user->getUserRoles()->add($role_admin);
 
     $manager->persist($user);

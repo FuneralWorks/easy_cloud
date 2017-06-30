@@ -31,8 +31,9 @@
 {% endblock card_body %}
 
 {% block card_footer %}
-    <a class="btn btn-primary" href="{{ path('licences_edit', { 'id': licence.id }) }}">Editer</a>
     <a href="{{ path('licences_index') }}">Retour à la liste</a>
+    <a class="btn btn-primary" href="{{ path('licences_edit', { 'id': licence.id }) }}">Editer</a>
+    
    {{ form_start(delete_form) }}
     <input class="btn btn-danger" type="submit" value="Supprimer"> {{ form_end(delete_form) }}
 

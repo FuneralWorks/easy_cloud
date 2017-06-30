@@ -2,22 +2,61 @@
 
 
 {% block card_header %}
-    <h1>Subscription edit</h1>
+    <h1>Abonnement modification</h1>
 {% endblock card_header %}
 
 
 {% block card_body %}
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-     
+    <div class="row"> 
+        <div class="col-sm-2">
+            {{ form_label(edit_form.name)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(edit_form.name) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-2">
+            {{ form_label(edit_form.startDate)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(edit_form.startDate) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-2">
+            {{ form_label(edit_form.monthDuration)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(edit_form.monthDuration) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-2">
+            {{ form_label(edit_form.sapContractNumber)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(edit_form.sapContractNumber) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-2">
+            {{ form_label(edit_form.client)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(edit_form.client) }}
+        </div>
+    </div>
 {% endblock card_body %}
 
 {% block card_footer%}
-   <input class="btn btn-success" type="submit" value="Edit" />
+    <a href="{{ path('subscriptions_index') }}">Retour à la liste</a>
+   <input class="btn btn-success" type="submit" value="Editer" />
     {{ form_end(edit_form) }}
     
-    <a href="{{ path('subscriptions_index') }}">Back to the list</a>
+    
     {{ form_start(delete_form) }}
-    <input class="btn btn-danger" type="submit" value="Delete">
+    <input class="btn btn-danger" type="submit" value="Supprimer">
     {{ form_end(delete_form) }}
 {% endblock card_footer%}

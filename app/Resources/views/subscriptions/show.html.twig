@@ -2,41 +2,46 @@
 
 
 {% block card_header %}
-    <h1>Subscription</h1>
+    <h1>Abonnement</h1>
 {% endblock card_header %}
 
 
 {% block card_body %}
     <table class="table">
         <tbody>
+            
+            <tr>
+                <th>Nom</th>
+                <td>{{ subscription.name }}</td>
+            </tr>
+            <tr>
+                <th>Date de début</th>
+                <td>{% if subscription.startDate %}{{ subscription.startDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Durée (Mois)</th>
+                <td>{{ subscription.monthDuration }}</td>
+            </tr>
+            <tr>
+                <th>Numéro de contrat sap</th>
+                <td>{{ subscription.sapContractNumber }}</td>
+            </tr>
             <tr>
                 <th>Id</th>
                 <td>{{ subscription.id }}</td>
             </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ subscription.name }}</td>
-            </tr>
-            <tr>
-                <th>Startdate</th>
-                <td>{% if subscription.startDate %}{{ subscription.startDate|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Monthduration</th>
-                <td>{{ subscription.monthDuration }}</td>
-            </tr>
-            <tr>
-                <th>Sapcontractnumber</th>
-                <td>{{ subscription.sapContractNumber }}</td>
-            </tr>
         </tbody>
     </table>
 
-            <a href="{{ path('subscriptions_index') }}">Back to the list</a>
-            <a class="btn btn-outline-primary"  href="{{ path('subscriptions_edit', { 'id': subscription.id }) }}">Edit</a>
-        
-            {{ form_start(delete_form) }}
-                <input class="btn btn-danger"type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            
         
 {% endblock card_body %}
+
+{% block card_footer%}
+    <a href="{{ path('subscriptions_index') }}">Retour à la liste</a>
+            <a class="btn btn-primary"  href="{{ path('subscriptions_edit', { 'id': subscription.id }) }}">Editer</a>
+        
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger"type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+{% endblock card_footer%}

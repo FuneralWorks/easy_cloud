@@ -13,7 +13,7 @@
                 <th>Login</th>
                 <th>Nom</th>
                 <th>Email</th>
-                <!--<th>Password</th>-->
+                <th>Role</th>
                 <!--<th>Salt</th>-->
                 <th>Actions</th>
             </tr>
@@ -24,7 +24,11 @@
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.login }}</a></td>
                 <td>{{ user.firstName}} {{ user.lastName}}</td>
                 <td>{{ user.email}} </td>
-                <!--<td>{{ user.password }}</td>-->
+                <td>
+                    {% for role in user.userRoles %}
+                             {{ role }}
+                    {% endfor %}
+                   </td>
                 <!--<td>{{ user.salt }}</td>-->
                 <td>
                     <a class="btn btn-primary" href="{{ path('user_show', { 'id': user.id }) }}">Voir</a>

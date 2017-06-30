@@ -2,15 +2,59 @@
 
 
 {% block card_header %}
-    <h1>Subscription creation</h1>
+    <h1>Création Abonnement</h1>
 {% endblock card_header %}
 
 
 {% block card_body %}
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div class="row"> 
+        <div class="col-sm-2">
+            {{ form_label(form.name)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(form.name) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-2">
+            {{ form_label(form.startDate)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(form.startDate) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-2">
+            {{ form_label(form.monthDuration)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(form.monthDuration) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-2">
+            {{ form_label(form.sapContractNumber)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(form.sapContractNumber) }}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-2">
+            {{ form_label(form.client)}}
+        </div>
+        <div class="col-sm-9">
+            {{ form_widget(form.client) }}
+        </div>
+    </div>
 
-    <a href="{{ path('subscriptions_index') }}">Back to the list</a>
+    
 {% endblock card_body %}
+
+
+{% block card_footer %}
+    <a href="{{ path('subscriptions_index') }}">Retour à la liste</a>
+    <input class="btn btn-success" type="submit" value="Créer" />
+    {{ form_end(form) }}
+{% endblock card_footer %}

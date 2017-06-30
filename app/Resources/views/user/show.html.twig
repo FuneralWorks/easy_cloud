@@ -25,6 +25,15 @@
                 <th>Login</th>
                 <td>{{ user.login }}</td>
             </tr>
+            <tr>
+                <th>Roles</th>
+                <td>
+                    {% for role in user.userRoles %}
+                        {{ role }}
+                    {% endfor %}
+                </td>
+            </tr>
+
             
         </tbody>
     </table>

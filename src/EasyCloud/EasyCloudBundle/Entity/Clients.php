@@ -22,10 +22,6 @@ class Clients
      */
     private $id;
     
-    /**
-    * @ORM\ManyToMany(targetEntity="User", mappedBy="clients")
-    */
-    private $users;
 
     /**
      * @var string
@@ -41,7 +37,16 @@ class Clients
      */
     private $description;
 
-    
+    /**
+     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\JoinTable(name="_assoc_user_client",
+     *     joinColumns={@ORM\JoinColumn(name="client_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
+     * )
+     *
+     * @var ArrayCollection $users
+     */
+    protected $users;
 
 
     /**
@@ -111,14 +116,17 @@ class Clients
 
    
 
+    
+    
+
     /**
      * Add user
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @param \EasyCloud\EasyCloudBundle\Entity\User $user
      *
      * @return Clients
      */
-    public function addUser(\Application\Sonata\UserBundle\Entity\User $user)
+    public function addUser(\EasyCloud\EasyCloudBundle\Entity\User $user)
     {
         $this->users[] = $user;
 
@@ -128,9 +136,9 @@ class Clients
     /**
      * Remove user
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @param \EasyCloud\EasyCloudBundle\Entity\User $user
      */
-    public function removeUser(\Application\Sonata\UserBundle\Entity\User $user)
+    public function removeUser(\EasyCloud\EasyCloudBundle\Entity\User $user)
     {
         $this->users->removeElement($user);
     }
@@ -144,6 +152,4 @@ class Clients
     {
         return $this->users;
     }
-
-    
 }

@@ -28,9 +28,10 @@
 {% endblock card_body %} 
 
 {% block card_footer %}
+    <a href="{{ path('clients_index') }}">Retour à la liste</a> 
     <input class="btn btn-success" type="submit" value="Editer" /> 
     {{ form_end(edit_form) }}
-    <a href="{{ path('clients_index') }}">Retour à la liste</a> 
+    
     {{ form_start(delete_form) }}
     <input class="btn btn-danger" type="submit" value="Supprimer"> {{ form_end(delete_form) }} 
 {% endblock card_footer %}

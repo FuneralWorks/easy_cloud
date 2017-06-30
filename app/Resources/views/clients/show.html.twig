@@ -10,10 +10,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ client.id }}</td>
-            </tr>
-            <tr>
                 <th>Nom</th>
                 <td>{{ client.name }}</td>
             </tr>
@@ -21,9 +17,22 @@
                 <th>Description</th>
                 <td>{{ client.description }}</td>
             </tr>
+             <tr>
+                <th>Users</th>
+               <td>
+                    {% for user in client.users %}
+                        {{ user }} 
+                    {% endfor %}
+               </td>
+                
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ client.id }}</td>
+            </tr>
         </tbody>
     </table>
-
+     
 
             
         
@@ -39,4 +48,5 @@
     {{ form_end(delete_form) }}
 
     </div>
+   
 {% endblock card_footer %}

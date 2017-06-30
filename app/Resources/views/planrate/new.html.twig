@@ -2,7 +2,7 @@
 
 
 {% block card_header %}
-    <h1>Planrate creation</h1>
+    <h1>Création Planrate</h1>
 {% endblock card_header %}
 
 
@@ -25,7 +25,8 @@
 {% endblock card_body %}
 
 {% block card_footer %}
-     <input class="btn btn-success" type="submit" value="Create" /> 
+    <a href="{{ path('planrate_index') }}">Retour à la liste</a>
+
+     <input class="btn btn-success" type="submit" value="Créer" /> 
     {{ form_end(form) }}
-    <a href="{{ path('planrate_index') }}">Back to the list</a>
 {% endblock card_footer %}

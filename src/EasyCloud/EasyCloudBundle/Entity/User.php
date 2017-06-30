@@ -61,16 +61,6 @@ class User implements UserInterface, \Serializable
      */
     protected $userRoles;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Clients", inversedBy="users")
-     * @ORM\JoinTable(name="user_clients",
-     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="clients_id", referencedColumnName="id")}
-     * )
-     *
-     * @var ArrayCollection $clients
-     */
-    protected $clients;
 
     public function __construct()
     {
@@ -245,7 +235,7 @@ class User implements UserInterface, \Serializable
 
     public function __toString()
     {
-    return $this->getName();
+    return $this->getEmail();
     }
 
     /**
